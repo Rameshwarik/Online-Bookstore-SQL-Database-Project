@@ -108,12 +108,6 @@ Example 3 – Remaining Stock
 | 1       | The Silent Sea | 25    | 10      | 15        |
 
 
-### 📸 Example Screenshot — Total Books Sold by Genre
-
-![Total Books Sold by Genre](./screenshots/total_books_sold_by_genre.png)
-
-<img width="828" height="486" alt="image" src="https://github.com/user-attachments/assets/44cdac93-69d0-41ef-8e5f-834399c073a2" />
-
 ---
 
 
