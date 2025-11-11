@@ -35,6 +35,9 @@ The project uses **three core tables** — `Books`, `Customers`, and `Orders` �
 
 Example placeholder:
 
++------------+ +-------------+ +-----------+
+| Customers | <----> | Orders | <----> | Books |
++------------+ +-------------+ +-----------+
 
 ---
 
@@ -46,11 +49,70 @@ CREATE DATABASE OnlineBookstore;
 USE OnlineBookstore;
 -- Run all CREATE TABLE statements from online_bookstore.sql
 
-📷 Screenshot_1: Database tables in MySQL Workbench  
-📷 Screenshot_2: Query results for Total Revenue  
+SET GLOBAL local_infile = 1;
 
-MIT License © 2025 Rameshwari Kadrame
+LOAD DATA LOCAL INFILE 'path/to/Books.csv'
+INTO TABLE Books
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(Book_ID, Title, Author, Genre, Published_Year, Price, Stock);
 
+🧮 SQL Queries Overview
+🔹 Basic Queries
+| # | Query                                               | Description                  |
+| - | --------------------------------------------------- | ---------------------------- |
+| 1 | `SELECT * FROM Books WHERE Genre = 'Fiction';`      | Retrieve all Fiction books   |
+| 2 | `SELECT * FROM Customers WHERE Country = 'Canada';` | List customers from Canada   |
+| 3 | `SELECT SUM(Stock) AS Total_Stock FROM Books;`      | Calculate total stock        |
+| 4 | `SELECT * FROM Books ORDER BY Price DESC LIMIT 1;`  | Find the most expensive book |
+
+🔹 Advanced Queries
+| # | Query                                                                                           | Description                  |
+| - | ----------------------------------------------------------------------------------------------- | ---------------------------- |
+| 1 | `SELECT Genre, SUM(Quantity) FROM Orders JOIN Books GROUP BY Genre;`                            | Total books sold per genre   |
+| 2 | `SELECT c.Name, SUM(o.Total_Amount) FROM Customers c JOIN Orders o ...;`                        | Top-spending customer        |
+| 3 | `SELECT b.Title, (b.Stock - SUM(o.Quantity)) AS Remaining FROM Books b LEFT JOIN Orders o ...;` | Remaining stock after orders |
+
+🧰 Tech Stack
+
+| Tool                        | Purpose                                             |
+| --------------------------- | --------------------------------------------------- |
+| **MySQL / MySQL Workbench** | Database management and query execution             |
+| **CSV Files**               | Data import source for Books, Customers, and Orders |
+| **SQL**                     | Used for schema creation, joins, and data analysis  |
+| **Git & GitHub**            | Version control and project hosting                 |
+
+
+📊 Sample Output
+
+Example 1 – Total Books Sold by Genre
+
+| Genre   | Total_Books_Sold |
+| ------- | ---------------- |
+| Fiction | 120              |
+| Fantasy | 85               |
+| Mystery | 64               |
+
+Example 2 – Top Spending Customer
+
+| Customer_ID | Name       | Total_Spent |
+| ----------- | ---------- | ----------- |
+| 104         | John Smith | 185.50      |
+
+Example 3 – Remaining Stock
+
+| Book_ID | Title          | Stock | Ordered | Remaining |
+| ------- | -------------- | ----- | ------- | --------- |
+| 1       | The Silent Sea | 25    | 10      | 15        |
+
+
+### 📸 Example Screenshot — Total Books Sold by Genre
+
+![Total Books Sold by Genre](./screenshots/total_books_sold_by_genre.png)
+
+<img width="828" height="486" alt="image" src="https://github.com/user-attachments/assets/44cdac93-69d0-41ef-8e5f-834399c073a2" />
 
 ---
 
