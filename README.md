@@ -54,14 +54,4 @@ MIT License © 2025 Rameshwari Kadrame
 
 ---
 
-### ✅ Next Steps:
-1. Copy this entire text into a file named **`README.md`**  
-2. Save it in the root of your project folder  
-3. (Optional) Add screenshots → `Online-Bookstore-SQL-Project/screenshots/`  
-4. Push it to your GitHub repo  
-
----
-
-Would you like me to include **sample output screenshots (mocked data visualization)** for your README (like SQL table results or dashboard-style visuals)?  
-I can generate clean MySQL-style images showing query outputs for your project.
 
